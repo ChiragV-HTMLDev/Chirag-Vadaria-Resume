@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chirag Vadaria — Senior Web Designer</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet"/>
-<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48dGV4dCB5PSIuOWVtIiBmb250LXNpemU9IjkwIj7wn5K7PC90ZXh0Pjwvc3ZnPg=="/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48dGV4dCB5PSIuOWVtIiBmb250LXNpemU9IjkwIj7wn5K7PC90ZXh0Pjwvc3ZnPg==">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <style>
 /* ── RESET ── */
@@ -206,6 +206,28 @@ body{
 .skill-item{font-size:13px;color:var(--ink2);display:flex;align-items:center;gap:8px;font-weight:400;}
 .skill-item::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--blue);flex-shrink:0;}
 
+
+/* ── TECH SKILLS ── */
+.tech-section { display:flex; flex-direction:column; gap:12px; }
+.tech-group {}
+.tech-group-label {
+  font-size:9.5px; font-weight:700; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--faint);
+  margin-bottom:6px;
+}
+.tech-tags {
+  display:flex; flex-wrap:wrap; gap:5px;
+}
+.tech-tag {
+  font-size:11.5px; font-weight:500; color:var(--ink2);
+  background:var(--chip); border:1px solid var(--line);
+  border-radius:6px; padding:3px 9px;
+  transition:background .12s, border-color .12s, color .12s;
+}
+.tech-tag:hover { background:var(--blu2); border-color:#bfdbfe; color:var(--blue); }
+.tech-tag.ai-tag { background:#faf5ff; border-color:#e9d5ff; color:#7c3aed; }
+.tech-tag.ai-tag:hover { background:#f3e8ff; border-color:#c4b5fd; color:#6d28d9; }
+
 /* ── PERSONAL ── */
 .personal-list{display:flex;flex-direction:column;gap:12px;}
 .pr-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:2px;}
@@ -341,6 +363,13 @@ html.pdf-mode .notice-green,.pdf-mode .notice-green{background:#f0fdf4!important
   .port-grid{grid-template-columns:1fr;}
   #fab{right:12px;bottom:12px;}
 }
+/* @media print, .pdf-mode {
+  .pdf-break-before {
+    page-break-before: always !important;
+    break-before: page !important;
+    margin-top: 50px; 
+  }
+} */
 </style>
 </head>
 <body>
@@ -350,7 +379,7 @@ html.pdf-mode .notice-green,.pdf-mode .notice-green{background:#f0fdf4!important
   <div class="tog-card">
     <span class="tog-lbl">Include Portfolio</span>
     <label class="sw">
-      <input type="checkbox" id="inclPort" checked/>
+      <input type="checkbox" id="inclPort" checked>
       <span class="sw-t"></span>
     </label>
   </div>
@@ -409,7 +438,7 @@ html.pdf-mode .notice-green,.pdf-mode .notice-green{background:#f0fdf4!important
           </p>
         </div>
 
-        <!-- COMPETENCIES -->
+        <!-- COMPETENCIES -->        
         <div>
           <div class="sec-lbl">Core Competencies</div>
           <div class="comp-grid">
@@ -427,7 +456,7 @@ html.pdf-mode .notice-green,.pdf-mode .notice-green{background:#f0fdf4!important
         </div>
 
         <!-- EXPERIENCE -->
-        <div>
+        <div class="">
           <div class="sec-lbl">Professional Experience</div>
           <div class="exp-block">
             <div class="exp-card">
@@ -464,7 +493,7 @@ html.pdf-mode .notice-green,.pdf-mode .notice-green{background:#f0fdf4!important
         </div>
 
         <!-- EDUCATION -->
-        <div class="edu-section-wrap">
+        <div class="edu-section-wrap ">
           <div class="sec-lbl">Education</div>
           <div class="edu-list">
             <div class="edu-row">
@@ -492,33 +521,76 @@ html.pdf-mode .notice-green,.pdf-mode .notice-green{background:#f0fdf4!important
         </div>
 
         <!-- DECLARATION + NOTE — always visible -->
-        <div id="resume-notices">
-          <div class="notice notice-blue">
-            <strong>Declaration</strong>
-            I hereby declare that the information provided above is true to the best of my knowledge. I believe in professional discipline, honesty, and delivering work with trust and responsibility.
-          </div>
-          <div class="notice notice-green">
-            <strong>Note</strong>
-            Successfully delivered 74+ HTML and UI development projects for companies and global clients. Due to company and client confidentiality policies, some projects cannot be shared publicly. Additional work samples can be presented during interviews or practical assessments.
-          </div>
-        </div>
+        
 
       </div><!-- /main-col -->
 
       <!-- SIDE -->
-      <div class="side-col">
+     <div class="side-col">
+        <!-- TECH SKILLS -->
         <div>
-          <div class="sec-lbl">Skills</div>
-          <div class="skill-list">
-            <div class="skill-item">Figma / PSD / XD &rarr; HTML</div>
-            <div class="skill-item">Responsive Design</div>
-            <div class="skill-item">Mobile-First UI</div>
-            <div class="skill-item">UX Wireframing</div>
-            <div class="skill-item">Mobile App UI Design</div>
-            <div class="skill-item">HRMS / Admin Panels</div>
-            <div class="skill-item">SEO-Friendly HTML</div>
-            <div class="skill-item">Cross-Browser Support</div>
-            <div class="skill-item">Performance Optimization</div>
+          <div class="sec-lbl">Technical Skills</div>
+          <div class="tech-section">
+
+            <div class="tech-group">
+              <div class="tech-group-label">Front-End</div>
+              <div class="tech-tags">
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS3</span>
+                 <span class="tech-tag">SCSS</span>
+                <span class="tech-tag">Bootstrap</span>
+                <span class="tech-tag">Tailwind CSS</span>
+              </div>
+            </div>
+
+            <div class="tech-group">
+              <div class="tech-group-label">JavaScript</div>
+              <div class="tech-tags">
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">jQuery</span>
+                <span class="tech-tag">React (Basic)</span>
+              </div>
+            </div>
+
+            <div class="tech-group">
+              <div class="tech-group-label">Design Tools</div>
+              <div class="tech-tags">
+                <span class="tech-tag">Figma</span>
+                <span class="tech-tag">Adobe XD</span>
+                <span class="tech-tag">Photoshop</span>
+                <span class="tech-tag">Illustrator</span>
+              </div>
+            </div>
+
+            <div class="tech-group">
+              <div class="tech-group-label">Dev Tools</div>
+              <div class="tech-tags">
+                <span class="tech-tag">VS Code</span>
+                <span class="tech-tag">GitHub</span>
+              </div>
+            </div>
+
+            <div class="tech-group">
+              <div class="tech-group-label">AI Tools</div>
+              <div class="tech-tags">
+                <span class="tech-tag ai-tag">ChatGPT</span>
+                <span class="tech-tag ai-tag">GitHub Copilot</span>
+                <span class="tech-tag ai-tag">AI UI/UX Workflow</span>
+                <span class="tech-tag ai-tag">AI Code Optimization</span>
+              </div>
+            </div>
+
+            <!-- <div class="tech-group">
+              <div class="tech-group-label">Other Skills</div>
+              <div class="tech-tags">
+                <span class="tech-tag">Responsive Design</span>
+                <span class="tech-tag">Mobile-First Dev</span>
+                <span class="tech-tag">Cross-Browser</span>
+                <span class="tech-tag">SEO-Friendly HTML</span>
+                <span class="tech-tag">Performance Opt.</span>
+              </div>
+            </div> -->
+
           </div>
         </div>
         <div>
@@ -534,11 +606,12 @@ html.pdf-mode .notice-green,.pdf-mode .notice-green{background:#f0fdf4!important
             </div>
             <div>
               <div class="pr-label">Address</div>
-              <div class="pr-val">Silver Habitat, Block 0-204,<br/>S.P. Ring Road, Nr. Royal Restaurant,<br/>Odhav, Ahmedabad – 382415</div>
+              <div class="pr-val">Silver Habitat, Block 0-204,<br>S.P. Ring Road, Nr. Royal Restaurant,<br>Odhav, Ahmedabad – 382415</div>
             </div>
           </div>
         </div>
-      </div><!-- /side-col -->
+      </div>
+      <!-- /side-col -->
 
     </div><!-- /body-cols -->
   </div><!-- /sheet -->
@@ -647,8 +720,19 @@ html.pdf-mode .notice-green,.pdf-mode .notice-green{background:#f0fdf4!important
         </div>
       </div>
 
+      <!-- <div id="resume-notices">
+          <div class="notice notice-blue">
+            <strong>Declaration</strong>
+            I hereby declare that the information provided above is true to the best of my knowledge. I believe in professional discipline, honesty, and delivering work with trust and responsibility.
+          </div>
+          <div class="notice notice-green">
+            <strong>Note</strong>
+            Successfully delivered 74+ HTML and UI development projects for companies and global clients. Due to company and client confidentiality policies, some projects cannot be shared publicly. Additional work samples can be presented during interviews or practical assessments.
+          </div>
+        </div> -->
+
       <!-- Notices at end of portfolio -->
-      <div id="portfolio-notices">
+      <div id="resume-notices">
         <div class="notice notice-blue" style="margin-top:20px;">
           <strong>Declaration</strong>
           I hereby declare that the information provided above is true to the best of my knowledge. I believe in professional discipline, honesty, and delivering work with trust and responsibility.
@@ -666,12 +750,13 @@ html.pdf-mode .notice-green,.pdf-mode .notice-green{background:#f0fdf4!important
 
 <script>
 /* ─────────────────────────────────────────────
-   FOLDER TOGGLE
+    FOLDER TOGGLE
 ───────────────────────────────────────────── */
 function toggleFolder() {
   var btn     = document.getElementById('folderBtn');
   var content = document.getElementById('folderContent');
   var lbl     = document.getElementById('folderLabel');
+  
   if (btn.classList.contains('open')) {
     btn.classList.remove('open');
     content.style.display = 'none';
@@ -684,109 +769,117 @@ function toggleFolder() {
 }
 
 /* ─────────────────────────────────────────────
-   SCROLL TO PORTFOLIO (header link)
+    SCROLL TO PORTFOLIO (header link)
 ───────────────────────────────────────────── */
 function scrollToPortfolio(e) {
   e.preventDefault();
   var btn     = document.getElementById('folderBtn');
   var content = document.getElementById('folderContent');
   var lbl     = document.getElementById('folderLabel');
+  
   if (!btn.classList.contains('open')) {
     btn.classList.add('open');
     content.style.display = 'block';
     lbl.textContent = 'Hide Projects';
   }
+  
   setTimeout(function() {
-    document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });
+    var target = document.getElementById('portfolio');
+    if(target) target.scrollIntoView({ behavior: 'smooth' });
   }, 50);
 }
 
 /* ─────────────────────────────────────────────
-   PDF DOWNLOAD  — bulletproof approach:
-   1. Prepare DOM (show/hide sections)
-   2. Add pdf-mode (kill animations & opacity)
-   3. Double-rAF + 300ms paint settle
-   4. Capture & download
-   5. Full restore
+    PDF DOWNLOAD 
 ───────────────────────────────────────────── */
 function dlPDF() {
-  var include = document.getElementById('inclPort').checked;
-
-  var fab           = document.getElementById('fab');
-  var portSheet     = document.querySelector('.port-sheet');
+  var includePort = document.getElementById('inclPort').checked;
+  var fab = document.getElementById('fab');
+  var portSheet     = document.getElementById('portfolio');
   var folderBtn     = document.getElementById('folderBtn');
   var folderContent = document.getElementById('folderContent');
   var resumeNotices = document.getElementById('resume-notices');
-  var portNotices   = document.getElementById('portfolio-notices');
 
-  /* ── STEP 1: prepare DOM ── */
+  // Save original states to restore later
+  var oldFabDisplay     = fab.style.display;
+  var oldPortDisplay    = portSheet.style.display;
+  var oldFolderBtnDisp  = folderBtn.style.display;
+  var oldFolderContDisp = folderContent.style.display;
+
+  /* ── STEP 1: Prepare DOM for Capture ── */
   fab.style.display = 'none';
 
-  if (!include) {
-    /* Resume only — hide portfolio, show resume notices */
-    portSheet.style.display      = 'none';
-    resumeNotices.style.display  = 'block';
+  // ALWAYS show notices in PDF
+  if (resumeNotices) {
+    resumeNotices.style.display = 'block';
+    // Only apply the break class if portfolio is included
+    if (includePort) {
+      resumeNotices.classList.add('force-page-break');
+    } else {
+      resumeNotices.classList.remove('force-page-break');
+    }
+  }
+
+  if (!includePort) {
+    if (portSheet) portSheet.style.display = 'none';
   } else {
-    /* Full — expose all projects, hide folder btn, hide duplicate notices */
-    folderContent.style.display  = 'block';
-    folderBtn.style.display      = 'none';
-    resumeNotices.style.display  = 'none';
-    portNotices.style.display    = 'block';
+    if (portSheet) portSheet.style.display = 'block';
+    if (folderContent) folderContent.style.display = 'block'; 
+    if (folderBtn) folderBtn.style.display = 'none'; 
   }
 
   window.scrollTo(0, 0);
 
-  /* ── STEP 2: freeze all animations / opacity ── */
+  /* ── STEP 2: Freeze animations ── */
   document.documentElement.classList.add('pdf-mode');
   document.body.classList.add('pdf-mode');
 
-  /* ── STEP 3: wait for two animation frames + extra paint time ── */
+  /* ── STEP 3: Wait for paint settle ── */
   requestAnimationFrame(function() {
     requestAnimationFrame(function() {
       setTimeout(function() {
 
         var el = document.getElementById('resume-root');
+        var fileName = includePort ? 'Chirag-Vadaria-Full-Resume.pdf' : 'Chirag-Vadaria-Resume.pdf';
+
+        var opt = {
+          margin:       0,
+          filename:     fileName,
+          image:        { type: 'jpeg', quality: 0.98 },
+          html2canvas:  { 
+            scale: 2, 
+            useCORS: true, 
+            letterRendering: true,
+            backgroundColor: '#ffffff'
+          },
+          jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
+          pagebreak:    { mode: ['avoid-all', 'css', 'legacy'] } // Crucial for breaks
+        };
 
         html2pdf()
-          .set({
-            margin:   0,
-            filename: include
-                        ? 'Chirag-Vadaria-Full-Resume.pdf'
-                        : 'Chirag-Vadaria-Resume.pdf',
-            image:    { type: 'jpeg', quality: 0.98 },
-            html2canvas: {
-              scale:           2,
-              useCORS:         true,
-              allowTaint:      true,
-              scrollX:         0,
-              scrollY:         0,
-              backgroundColor: '#ffffff',
-              removeContainer: true,
-              logging:         false
-            },
-            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-          })
+          .set(opt)
           .from(el)
           .save()
           .then(function() {
-            /* ── STEP 5: full restore ── */
-            document.documentElement.classList.remove('pdf-mode');
-            document.body.classList.remove('pdf-mode');
-            fab.style.display            = 'flex';
-            portSheet.style.display      = '';
-            folderBtn.style.display      = '';
-            folderContent.style.display  = '';
-            resumeNotices.style.display  = 'block';
-            portNotices.style.display    = 'block';
+            restoreUI();
           })
           .catch(function(err) {
             console.error('PDF error:', err);
-            document.documentElement.classList.remove('pdf-mode');
-            document.body.classList.remove('pdf-mode');
-            fab.style.display = 'flex';
+            restoreUI();
           });
 
-      }, 300);
+        function restoreUI() {
+          document.documentElement.classList.remove('pdf-mode');
+          document.body.classList.remove('pdf-mode');
+          fab.style.display = oldFabDisplay;
+          portSheet.style.display = oldPortDisplay;
+          folderBtn.style.display = oldFolderBtnDisp;
+          folderContent.style.display = oldFolderContDisp;
+          // Clean up the break class so it doesn't affect the web view
+          if (resumeNotices) resumeNotices.classList.remove('force-page-break');
+        }
+
+      }, 350); // Slightly increased delay for cleaner rendering
     });
   });
 }
