@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Chirag Vadaria — Senior Web Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet"/>
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48dGV4dCB5PSIuOWVtIiBmb250LXNpemU9IjkwIj7wn5K7PC90ZXh0Pjwvc3ZnPg=="/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<style>
+/* ── RESET ── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+
+/* ── USE MY RESUME COLORS── */
+:root{
+  --w:#ffffff;
+  --bg:#f2f4f7;
+  --ink:#111318;
+  --ink2:#2d3039;
+  --muted:#5c6070;
+  --faint:#8b90a0;
+  --line:#e4e6ec;
+  --line2:#d0d3de;
+  --chip:#f0f1f5;
+  --blue:#2563eb;
+  --blu2:#eff4ff;
+  --grn:#16a34a;
+  --grn2:#f0fdf4;
+  --r:10px;
+}
+
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:15px;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ── FAB ── */
+#fab{
+  position:fixed;bottom:28px;right:28px;
+  z-index:300;
+  display:flex;flex-direction:column;align-items:flex-end;gap:10px;
+}
+.tog-card{
+  background:var(--w);border:1px solid var(--line2);
+  border-radius:12px;padding:10px 16px;
+  display:flex;align-items:center;gap:10px;
+  box-shadow:0 2px 12px rgba(0,0,0,.07);
+}
+.tog-lbl{font-size:13px;font-weight:500;color:var(--ink2);}
+.sw{position:relative;display:inline-block;width:38px;height:21px;}
+.sw input{opacity:0;width:0;height:0;}
+.sw-t{
+  position:absolute;inset:0;
+  background:var(--line2);border-radius:99px;
+  cursor:pointer;transition:background .2s;
+}
+.sw-t::after{
+  content:'';position:absolute;top:3px;left:3px;
+  width:15px;height:15px;background:#fff;
+  border-radius:50%;transition:transform .2s;
+  box-shadow:0 1px 3px rgba(0,0,0,.2);
+}
+.sw input:checked+.sw-t{background:var(--blue);}
+.sw input:checked+.sw-t::after{transform:translateX(17px);}
+.dl-btn{
+  background:var(--ink);color:#fff;border:none;
+  padding:12px 22px;border-radius:12px;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:13px;font-weight:600;cursor:pointer;
+  display:flex;align-items:center;gap:8px;
+  box-shadow:0 2px 12px rgba(0,0,0,.18);
+  transition:background .15s,transform .15s;
+  letter-spacing:.01em;
+}
+.dl-btn:hover{background:#222;transform:translateY(-1px);}
+.dl-btn:active{transform:scale(.97);}
+
+/* ── PAGE ── */
+.page{max-width:820px;margin:0 auto;padding:32px 16px 100px;}
+
+/* ── SHEET ── */
+.sheet{
+  background:var(--w);
+  border-radius:16px;
+  border:1px solid var(--line);
+  overflow:hidden;
+  box-shadow:0 1px 3px rgba(0,0,0,.04),0 8px 32px rgba(0,0,0,.06);
+}
+
+/* ── HEADER ── */
+.hd{padding:36px 44px 32px;border-bottom:1px solid var(--line);}
+.hd-name{
+  font-family:'Lora',serif;font-size:34px;font-weight:700;
+  line-height:1;letter-spacing:-1px;color:var(--ink);margin-bottom:6px;
+}
+.hd-name em{font-style:italic;color:var(--blue);}
+.hd-role{
+  font-size:13px;font-weight:600;color:var(--muted);
+  letter-spacing:.06em;text-transform:uppercase;margin-bottom:18px;
+  display:flex;align-items:center;flex-wrap:wrap;gap:8px;
+}
+.exp-badge{
+  display:inline-block;font-size:11px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;
+  background:var(--blu2);color:var(--blue);
+  border:1px solid #bfdbfe;padding:4px 12px;
+  border-radius:99px;vertical-align:middle;
+}
+.hd-contacts{display:flex;flex-wrap:wrap;gap:6px 18px;}
+.hd-c{
+  display:flex;align-items:center;gap:6px;
+  font-size:13px;color:var(--muted);
+  text-decoration:none;transition:color .12s;
+}
+.hd-c:hover{color:var(--blue);}
+.hd-c i{font-size:11px;color:var(--faint);}
+/* portfolio link in header — styled distinctly */
+.hd-c.port-link-hd{
+  color:var(--blue);font-weight:600;
+  background:var(--blu2);border:1px solid #bfdbfe;
+  padding:4px 12px;border-radius:99px;
+}
+.hd-c.port-link-hd i{color:var(--blue);}
+.hd-c.port-link-hd:hover{background:#dbeafe;}
+
+/* ── BODY COLS ── */
+.body-cols{display:grid;grid-template-columns:1fr 236px;}
+
+/* ── MAIN COL ── */
+.main-col{
+  padding:32px 44px;
+  border-right:1px solid var(--line);
+  display:flex;flex-direction:column;gap:24px;
+}
+
+/* ── SIDE COL ── */
+.side-col{padding:32px 28px;display:flex;flex-direction:column;gap:26px;}
+
+/* ── SECTION LABEL ── */
+.sec-lbl{
+  font-size:10px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--faint);
+  display:flex;align-items:center;gap:8px;margin-bottom:14px;
+}
+.sec-lbl::after{content:'';flex:1;height:1px;background:var(--line);}
+
+/* ── OBJECTIVE ── */
+.objective{font-size:14px;line-height:1.85;color:var(--muted);font-weight:400;}
+
+/* ── COMPETENCIES ── */
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.comp-chip{
+  font-size:13px;font-weight:500;color:var(--ink2);
+  background:var(--chip);border:1px solid var(--line);
+  border-radius:7px;padding:7px 11px;
+  display:flex;align-items:center;gap:7px;
+}
+.comp-chip::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--blue);flex-shrink:0;}
+
+/* ── EXPERIENCE ── */
+.exp-block{display:flex;flex-direction:column;gap:12px;}
+.exp-card{
+  border:1px solid var(--line);border-radius:var(--r);
+  padding:16px 18px;background:var(--w);
+  transition:border-color .15s,box-shadow .15s;
+}
+.exp-card:hover{border-color:var(--line2);box-shadow:0 2px 12px rgba(0,0,0,.06);}
+.exp-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:10px;}
+.exp-title{font-size:14px;font-weight:700;color:var(--ink);line-height:1.3;}
+.exp-co{font-size:12.5px;font-weight:600;color:var(--blue);margin-top:2px;}
+.exp-date{
+  font-size:11px;font-weight:600;color:var(--faint);
+  background:var(--chip);border:1px solid var(--line);
+  padding:3px 10px;border-radius:99px;white-space:nowrap;flex-shrink:0;
+}
+.exp-list{list-style:none;display:flex;flex-direction:column;gap:5px;}
+.exp-list li{font-size:13.5px;color:var(--muted);line-height:1.6;display:flex;align-items:flex-start;gap:8px;}
+.exp-list li::before{content:'–';color:var(--faint);font-weight:700;flex-shrink:0;}
+
+/* ── EDUCATION ── */
+.edu-section-wrap{page-break-inside:avoid;break-inside:avoid;page-break-before:avoid;break-before:avoid;}
+.edu-list{display:flex;flex-direction:column;gap:8px;page-break-inside:avoid;break-inside:avoid;}
+.edu-row{
+  display:flex;gap:14px;align-items:center;
+  padding:11px 14px;border:1px solid var(--line);
+  border-radius:var(--r);background:var(--w);
+  page-break-inside:avoid;break-inside:avoid;
+}
+.edu-icon-wrap{
+  width:34px;height:34px;border-radius:8px;
+  background:var(--blu2);border:1px solid #bfdbfe;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.edu-icon-wrap i{font-size:13px;color:var(--blue);}
+.edu-title{font-size:14px;font-weight:700;color:var(--ink);line-height:1.3;}
+.edu-meta{font-size:12.5px;color:var(--faint);margin-top:2px;font-weight:400;}
+
+/* ── SKILLS ── */
+.skill-list{display:flex;flex-direction:column;gap:7px;}
+.skill-item{font-size:13px;color:var(--ink2);display:flex;align-items:center;gap:8px;font-weight:400;}
+.skill-item::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--blue);flex-shrink:0;}
+
+/* ── PERSONAL ── */
+.personal-list{display:flex;flex-direction:column;gap:12px;}
+.pr-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:2px;}
+.pr-val{font-size:13px;color:var(--ink2);font-weight:400;line-height:1.5;}
+
+/* ── NOTICES ── */
+.notice{border-radius:var(--r);padding:14px 18px;font-size:13.5px;line-height:1.7;margin-top:12px;}
+.notice strong{font-weight:700;display:block;margin-bottom:3px;font-size:11px;letter-spacing:.05em;text-transform:uppercase;}
+.notice-blue{background:var(--blu2);border:1px solid #bfdbfe;color:#1d4ed8;}
+.notice-green{background:var(--grn2);border:1px solid #bbf7d0;color:#15803d;}
+
+/* ── PORTFOLIO SHEET ── */
+.port-sheet{
+  background:var(--w);border-radius:16px;
+  border:1px solid var(--line);padding:40px 44px;
+  margin-top:16px;
+  box-shadow:0 1px 3px rgba(0,0,0,.04),0 8px 32px rgba(0,0,0,.06);
+}
+.port-head{
+  margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--line);
+}
+.port-title{
+  font-family:'Lora',serif;font-size:26px;font-weight:700;
+  letter-spacing:-.5px;color:var(--ink);
+}
+.port-title em{font-style:italic;color:var(--blue);}
+
+/* folder toggle button */
+.folder-toggle{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-top:12px;
+  font-size:12.5px;font-weight:600;color:var(--muted);
+  background:var(--chip);border:1px solid var(--line);
+  border-radius:8px;padding:6px 14px;cursor:pointer;
+  transition:background .15s,color .15s,border-color .15s;
+  user-select:none;
+}
+.folder-toggle:hover{background:var(--blu2);color:var(--blue);border-color:#bfdbfe;}
+.folder-toggle.open{background:var(--blu2);color:var(--blue);border-color:#bfdbfe;}
+.folder-toggle i{font-size:13px;transition:transform .2s;}
+.folder-toggle.open i.fa-folder{display:none;}
+.folder-toggle i.fa-folder-open{display:none;}
+.folder-toggle.open i.fa-folder-open{display:inline;}
+.folder-toggle.open i.fa-folder{display:none;}
+
+.role-lbl{
+  font-size:10px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--faint);
+  display:flex;align-items:center;gap:8px;
+  margin-bottom:10px;margin-top:24px;
+}
+.role-lbl:first-of-type{margin-top:0;}
+.role-lbl::after{content:'';flex:1;height:1px;background:var(--line);}
+.role-desc{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:14px;}
+.port-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.port-card{
+  border:1px solid var(--line);border-radius:var(--r);
+  padding:16px;background:var(--w);
+  display:flex;flex-direction:column;gap:5px;
+  transition:border-color .15s,box-shadow .15s,transform .2s;
+}
+.port-card:hover{border-color:var(--line2);box-shadow:0 4px 16px rgba(0,0,0,.07);transform:translateY(-2px);}
+.port-card-title{font-size:13.5px;font-weight:700;color:var(--ink);}
+.port-card-desc{font-size:12.5px;color:var(--muted);line-height:1.55;flex:1;}
+.p-link{
+  font-size:12px;font-weight:600;color:var(--blue);
+  text-decoration:none;display:inline-flex;align-items:center;gap:4px;
+  margin-top:6px;transition:gap .15s;
+}
+.p-link:hover{gap:7px;}
+.p-link::after{content:'→';font-size:11px;}
+
+/* ── ANIMATIONS ── */
+@keyframes up{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+.sheet{animation:up .5s ease both;}
+.port-sheet{animation:up .5s .1s ease both;}
+
+/* ── PDF MODE — all transparent/animation issues killed ── */
+html.pdf-mode,html.pdf-mode *,
+.pdf-mode,.pdf-mode *{
+  animation:none!important;
+  transition:none!important;
+  opacity:1!important;
+  mix-blend-mode:normal!important;
+}
+html.pdf-mode body,.pdf-mode{
+  background:#ffffff!important;
+  cursor:default!important;
+}
+html.pdf-mode .page,.pdf-mode .page{
+  padding:0!important;
+  max-width:100%!important;
+  margin:0!important;
+}
+html.pdf-mode .sheet,html.pdf-mode .port-sheet,
+.pdf-mode .sheet,.pdf-mode .port-sheet{
+  border-radius:0!important;
+  box-shadow:none!important;
+  border:none!important;
+  margin-top:0!important;
+}
+html.pdf-mode #fab,.pdf-mode #fab{display:none!important;}
+/* Ensure all text colours stay solid */
+html.pdf-mode .hd-name,.pdf-mode .hd-name{color:#111318!important;}
+html.pdf-mode .hd-name em,.pdf-mode .hd-name em{color:#2563eb!important;}
+html.pdf-mode .objective,.pdf-mode .objective{color:#5c6070!important;}
+html.pdf-mode .comp-chip,.pdf-mode .comp-chip{background:#f0f1f5!important;border-color:#e4e6ec!important;color:#2d3039!important;}
+html.pdf-mode .exp-card,.pdf-mode .exp-card{background:#ffffff!important;border-color:#e4e6ec!important;}
+html.pdf-mode .edu-row,.pdf-mode .edu-row{background:#ffffff!important;border-color:#e4e6ec!important;}
+html.pdf-mode .edu-icon-wrap,.pdf-mode .edu-icon-wrap{background:#eff4ff!important;}
+html.pdf-mode .port-card,.pdf-mode .port-card{background:#ffffff!important;border-color:#e4e6ec!important;transform:none!important;}
+html.pdf-mode .notice-blue,.pdf-mode .notice-blue{background:#eff4ff!important;color:#1d4ed8!important;}
+html.pdf-mode .notice-green,.pdf-mode .notice-green{background:#f0fdf4!important;color:#15803d!important;}
+
+/* ── PRINT ── */
+@media print{
+  body{background:#fff!important;}
+  .page{padding:0!important;}
+  .sheet,.port-sheet{border-radius:0!important;box-shadow:none!important;border:none!important;margin-top:0;}
+  #fab{display:none!important;}
+  .port-sheet{page-break-before:always;}
+  .folder-toggle{display:none!important;}
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:700px){
+  .hd{padding:24px 20px;}
+  .body-cols{grid-template-columns:1fr;}
+  .main-col{padding:24px 20px;border-right:none;border-bottom:1px solid var(--line);}
+  .side-col{padding:20px;}
+  .comp-grid{grid-template-columns:1fr;}
+  .port-sheet{padding:24px 20px;}
+  .port-grid{grid-template-columns:1fr;}
+  #fab{right:12px;bottom:12px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ── FAB ── -->
+<div id="fab">
+  <div class="tog-card">
+    <span class="tog-lbl">Include Portfolio</span>
+    <label class="sw">
+      <input type="checkbox" id="inclPort" checked/>
+      <span class="sw-t"></span>
+    </label>
+  </div>
+  <button class="dl-btn" onclick="dlPDF()">
+    <i class="fa-solid fa-file-pdf"></i> Download PDF
+  </button>
+</div>
+
+<!-- ── PAGE ── -->
+<div class="page" id="resume-root">
+
+  <!-- ══ RESUME SHEET ══ -->
+  <div class="sheet">
+
+    <!-- HEADER -->
+    <div class="hd">
+      <h1 class="hd-name">Chirag <em>Vadaria</em></h1>
+      <div class="hd-role">
+        Senior HTML Developer &amp; Web Designer
+        <!-- <div class="exp-badge">5+ Yrs Experience</div> -->
+      </div>
+      <div class="hd-contacts">
+        <a href="tel:+919662755562" class="hd-c">
+          <i class="fa-solid fa-phone"></i> +91-96627 55562
+        </a>
+        <a href="mailto:chiag.uidesigner@gmail.com" class="hd-c">
+          <i class="fa-solid fa-envelope"></i> chiag.uidesigner@gmail.com
+        </a>
+        <span class="hd-c">
+          <i class="fa-solid fa-location-dot"></i> Ahmedabad, India
+        </span>
+        <a href="https://www.linkedin.com/in/chiraghtml-dev/" target="_blank" class="hd-c">
+          <i class="fa-brands fa-linkedin"></i> linkedin.com/in/chiraghtml-dev
+        </a>
+        <!-- <a href="https://github.com/ChiragV-HTMLDev" target="_blank" class="hd-c">
+          <i class="fa-brands fa-github"></i> github.com/ChiragV-HTMLDev
+        </a> -->
+        <!-- Portfolio link in header -->
+        <a href="#portfolio" class="hd-c port-link-hd" onclick="scrollToPortfolio(event)">
+          <i class="fa-solid fa-folder-open"></i> My Portfolio
+        </a>
+      </div>
+    </div>
+
+    <!-- BODY -->
+    <div class="body-cols">
+
+      <!-- MAIN -->
+      <div class="main-col">
+
+        <!-- OBJECTIVE -->
+        <div>
+          <div class="sec-lbl">Career Objective</div>
+          <p class="objective">
+            Senior HTML Developer &amp; Web Designer with 5+ years of experience creating responsive, pixel-perfect, and SEO-friendly websites with a strong focus on human-centered design. Skilled in Figma / PSD / XD to HTML conversion, mobile-first UI development, UX wireframing, and mobile app UI design. Experienced in HRMS systems, e-commerce platforms, and global client projects. Known for quality work, reliability, and timely delivery.
+          </p>
+        </div>
+
+        <!-- COMPETENCIES -->
+        <div>
+          <div class="sec-lbl">Core Competencies</div>
+          <div class="comp-grid">
+            <div class="comp-chip">Pixel Perfect HTML</div>
+            <div class="comp-chip">Responsive Design</div>
+            <div class="comp-chip">SEO Friendly HTML</div>
+            <div class="comp-chip">Landing Page UI</div>
+            <div class="comp-chip">UX Wireframe to UI</div>
+            <div class="comp-chip">Mobile App UI Design</div>
+            <div class="comp-chip">HRMS Admin Panels</div>
+            <div class="comp-chip">Cross Browser Support</div>
+            <div class="comp-chip">Performance Optimization</div>
+            <div class="comp-chip">Mobile First Design</div>
+          </div>
+        </div>
+
+        <!-- EXPERIENCE -->
+        <div>
+          <div class="sec-lbl">Professional Experience</div>
+          <div class="exp-block">
+            <div class="exp-card">
+              <div class="exp-top">
+                <div>
+                  <div class="exp-title">Senior Web Designer / HTML Developer</div>
+                  <div class="exp-co">iQlance Solutions PVT LTD</div>
+                </div>
+                <span class="exp-date">Dec 2021 – Present</span>
+              </div>
+              <ul class="exp-list">
+                <li>Developed HRMS admin dashboards and complete UI systems.</li>
+                <li>Converted Figma / PSD / XD designs into responsive HTML.</li>
+                <li>Converted UX wireframes into mobile and web UI</li>
+                <li>Handled global client UI projects end-to-end.</li>
+              </ul>
+            </div>
+            <div class="exp-card">
+              <div class="exp-top">
+                <div>
+                  <div class="exp-title">Web Designer</div>
+                  <div class="exp-co">Mike Sierra Technologies</div>
+                </div>
+                <span class="exp-date">Jun 2018 – Jul 2021</span>
+              </div>
+              <ul class="exp-list">
+                <li>Maintained and optimised 6+ e-commerce websites.</li>
+                <li>Redesigned product page templates and UI components.</li>
+                <li> Created promotional banners and offer sections to increase sales.
+</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- EDUCATION -->
+        <div class="edu-section-wrap">
+          <div class="sec-lbl">Education</div>
+          <div class="edu-list">
+            <div class="edu-row">
+              <div class="edu-icon-wrap"><i class="fa-solid fa-graduation-cap"></i></div>
+              <div>
+                <div class="edu-title">S.Y. B.A. (English)</div>
+                <div class="edu-meta">Saurashtra University &nbsp;·&nbsp; Completed 2007</div>
+              </div>
+            </div>
+            <div class="edu-row">
+              <div class="edu-icon-wrap"><i class="fa-solid fa-palette"></i></div>
+              <div>
+                <div class="edu-title">Diploma in Multimedia</div>
+                <div class="edu-meta">Xplora Design School &nbsp;·&nbsp; 2009 &nbsp;·&nbsp; 2 Years</div>
+              </div>
+            </div>
+            <div class="edu-row">
+              <div class="edu-icon-wrap"><i class="fa-solid fa-code"></i></div>
+              <div>
+                <div class="edu-title">HTML Developer Training</div>
+                <div class="edu-meta">Wethe Developer &nbsp;·&nbsp; 2010 &nbsp;·&nbsp; 6 Months</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DECLARATION + NOTE — always visible -->
+        <div id="resume-notices">
+          <div class="notice notice-blue">
+            <strong>Declaration</strong>
+            I hereby declare that the information provided above is true to the best of my knowledge. I believe in professional discipline, honesty, and delivering work with trust and responsibility.
+          </div>
+          <div class="notice notice-green">
+            <strong>Note</strong>
+            Successfully delivered 74+ HTML and UI development projects for companies and global clients. Due to company and client confidentiality policies, some projects cannot be shared publicly. Additional work samples can be presented during interviews or practical assessments.
+          </div>
+        </div>
+
+      </div><!-- /main-col -->
+
+      <!-- SIDE -->
+      <div class="side-col">
+        <div>
+          <div class="sec-lbl">Skills</div>
+          <div class="skill-list">
+            <div class="skill-item">Figma / PSD / XD &rarr; HTML</div>
+            <div class="skill-item">Responsive Design</div>
+            <div class="skill-item">Mobile-First UI</div>
+            <div class="skill-item">UX Wireframing</div>
+            <div class="skill-item">Mobile App UI Design</div>
+            <div class="skill-item">HRMS / Admin Panels</div>
+            <div class="skill-item">SEO-Friendly HTML</div>
+            <div class="skill-item">Cross-Browser Support</div>
+            <div class="skill-item">Performance Optimization</div>
+          </div>
+        </div>
+        <div>
+          <div class="sec-lbl">Personal</div>
+          <div class="personal-list">
+            <div>
+              <div class="pr-label">Date of Birth</div>
+              <div class="pr-val">14 November 1986</div>
+            </div>
+            <div>
+              <div class="pr-label">Marital Status</div>
+              <div class="pr-val">Married</div>
+            </div>
+            <div>
+              <div class="pr-label">Address</div>
+              <div class="pr-val">Silver Habitat, Block 0-204,<br/>S.P. Ring Road, Nr. Royal Restaurant,<br/>Odhav, Ahmedabad – 382415</div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /side-col -->
+
+    </div><!-- /body-cols -->
+  </div><!-- /sheet -->
+
+
+  <!-- ══ PORTFOLIO SHEET ══ -->
+  <div class="port-sheet" id="portfolio">
+
+    <div class="port-head">
+      <div class="port-title">Portfolio <em>Projects</em></div>
+      <!-- Folder toggle button -->
+      <div class="folder-toggle open" id="folderBtn" onclick="toggleFolder()">
+        <i class="fa-solid fa-folder"></i>
+        <i class="fa-solid fa-folder-open"></i>
+        <span id="folderLabel">Hide Projects</span>
+      </div>
+    </div>
+
+    <!-- All projects wrapped in collapsible container -->
+    <div id="folderContent">
+
+      <!-- HTML DEVELOPER -->
+      <div class="role-lbl">Role as HTML Developer</div>
+      <p class="role-desc">Converted design files into pixel-perfect responsive HTML layouts, optimised performance, and ensured cross-browser compatibility across all major browsers and devices.</p>
+      <div class="port-grid">
+        <div class="port-card">
+          <div class="port-card-title">VetSupply E-Commerce</div>
+          <div class="port-card-desc">Large-scale e-commerce platform UI development with full responsive layout.</div>
+          <a href="https://www.vetsupply.com.au/" target="_blank" class="p-link">Visit Website</a>
+        </div>
+        <div class="port-card">
+          <div class="port-card-title">Budget Pet Care</div>
+          <div class="port-card-desc">Product-focused e-commerce UI with responsive design and optimised performance.</div>
+          <a href="https://www.budgetpetcare.com/" target="_blank" class="p-link">Visit Website</a>
+        </div>
+        <div class="port-card">
+          <div class="port-card-title">iQlance Website</div>
+          <div class="port-card-desc">Company website UI development and complete HTML implementation.</div>
+          <a href="https://www.iqlance.com/" target="_blank" class="p-link">Visit Website</a>
+        </div>
+        <div class="port-card">
+          <div class="port-card-title">iQlance CA</div>
+          <div class="port-card-desc">Responsive company website UI with modern HTML implementation.</div>
+          <a href="https://iqlance.ca/" target="_blank" class="p-link">Visit Website</a>
+        </div>
+        <div class="port-card">
+          <div class="port-card-title">Market Place Web Design</div>
+          <div class="port-card-desc">Marketplace UI developed from Figma to responsive HTML layout.</div>
+          <a href="https://www.figma.com/proto/lALHatwG5lcZ17lOe75soR/Market-Place-Web-Design-EMY?page-id=0%3A1&node-id=0-1" target="_blank" class="p-link">View Project</a>
+        </div>
+        <div class="port-card">
+          <div class="port-card-title">iQDigital Home</div>
+          <div class="port-card-desc">Corporate website homepage with modern responsive UI design.</div>
+          <a href="https://www.figma.com/proto/r4dExqdzJFiep8Ij1BUGWX/iQDigital-Home?page-id=0%3A1&node-id=81-243" target="_blank" class="p-link">View Project</a>
+        </div>
+        <div class="port-card">
+          <div class="port-card-title">ERP Logistics</div>
+          <div class="port-card-desc">Enterprise logistics dashboard UI and admin interface design.</div>
+          <a href="https://www.figma.com/proto/4qvSsjkyklWcIbqH6CQZ8R/ERP-Logistics--Version?page-id=983%3A10599&node-id=1064-15051" target="_blank" class="p-link">View Project</a>
+        </div>
+        <div class="port-card">
+          <div class="port-card-title">FoodResQ Website</div>
+          <div class="port-card-desc">Responsive website UI with optimised performance and modern layout.</div>
+          <a href="https://www.figma.com/proto/0sd1la70sPnC1QJSoYm9Se/FOODRESQ_Website--Copy-?page-id=0%3A1&node-id=6-942" target="_blank" class="p-link">View Project</a>
+        </div>
+      </div>
+
+      <!-- UI DESIGNER -->
+      <div class="role-lbl">Role as UI Designer</div>
+      <p class="role-desc">Designed intuitive mobile app interfaces focusing on usability, user journey optimisation, and modern UI design systems that enhance engagement and satisfaction.</p>
+      <div class="port-grid">
+        <div class="port-card">
+          <div class="port-card-title">ShoppyWhere App</div>
+          <div class="port-card-desc">Shopping mobile app UI with modern navigation flow and clean interface.</div>
+          <a href="https://www.figma.com/proto/pltjDzWgiz2AfOC4jhfF29/ShoppyWhere?node-id=1-2" target="_blank" class="p-link">View Project</a>
+        </div>
+        <div class="port-card">
+          <div class="port-card-title">Social Media Sharing App</div>
+          <div class="port-card-desc">Social platform UI focused on seamless user interaction and sharing.</div>
+          <a href="https://www.figma.com/design/wWmrBvvPDGdzGFHdVjEEWn/SocialMediaSharing-App?node-id=0-1" target="_blank" class="p-link">View Project</a>
+        </div>
+        <div class="port-card">
+          <div class="port-card-title">Curiouzz App</div>
+          <div class="port-card-desc">Interactive mobile UI with user-friendly experience and engaging flows.</div>
+          <a href="https://www.figma.com/proto/hZMWZy8NBAzXKHtNytcbdD/Curiouzz?node-id=507-2530" target="_blank" class="p-link">View Project</a>
+        </div>
+        <div class="port-card">
+          <div class="port-card-title">Mobile App iQlance</div>
+          <div class="port-card-desc">Corporate mobile application UI design with clean navigation system.</div>
+          <a href="https://www.figma.com/proto/AFoRSAViYXO2zIykgVv6Sg/Mobile-App-iQlance?node-id=1-652" target="_blank" class="p-link">View Project</a>
+        </div>
+        <div class="port-card">
+          <div class="port-card-title">Shared Storage App</div>
+          <div class="port-card-desc">Cloud storage mobile UI with clean minimal layout and intuitive UX.</div>
+          <a href="https://www.figma.com/proto/KktZ1CUubZ2iHxE61c01aI/SHARED-STORAGE-App-UI--Copy-?node-id=1-5" target="_blank" class="p-link">View Project</a>
+        </div>
+        <div class="port-card">
+          <div class="port-card-title">Vibe Reserve</div>
+          <div class="port-card-desc">Reservation and booking app UI with smooth user journey design.</div>
+          <a href="https://www.figma.com/proto/7EjrPBmqL7JX7eat4L8mcf/VIBE-RESERVE?node-id=11-683" target="_blank" class="p-link">View Project</a>
+        </div>
+        <div class="port-card">
+          <div class="port-card-title">Market Place UI</div>
+          <div class="port-card-desc">Marketplace mobile app UI design with modern visual hierarchy.</div>
+          <a href="https://www.figma.com/proto/BJzd60K56WaZxiYrAdVaGR/Market-Place-New_1?node-id=1-814" target="_blank" class="p-link">View Project</a>
+        </div>
+      </div>
+
+      <!-- Notices at end of portfolio -->
+      <div id="portfolio-notices">
+        <div class="notice notice-blue" style="margin-top:20px;">
+          <strong>Declaration</strong>
+          I hereby declare that the information provided above is true to the best of my knowledge. I believe in professional discipline, honesty, and delivering work with trust and responsibility.
+        </div>
+        <div class="notice notice-green" style="margin-top:10px;">
+          <strong>Note</strong>
+          Successfully delivered 74+ HTML and UI development projects for companies and global clients. Due to confidentiality policies, several projects cannot be shared publicly. More work can be shown during interviews or practical tests.
+        </div>
+      </div>
+
+    </div><!-- /folderContent -->
+  </div><!-- /port-sheet -->
+
+</div><!-- /page -->
+
+<script>
+/* ─────────────────────────────────────────────
+   FOLDER TOGGLE
+───────────────────────────────────────────── */
+function toggleFolder() {
+  var btn     = document.getElementById('folderBtn');
+  var content = document.getElementById('folderContent');
+  var lbl     = document.getElementById('folderLabel');
+  if (btn.classList.contains('open')) {
+    btn.classList.remove('open');
+    content.style.display = 'none';
+    lbl.textContent = 'Show Projects';
+  } else {
+    btn.classList.add('open');
+    content.style.display = 'block';
+    lbl.textContent = 'Hide Projects';
+  }
+}
+
+/* ─────────────────────────────────────────────
+   SCROLL TO PORTFOLIO (header link)
+───────────────────────────────────────────── */
+function scrollToPortfolio(e) {
+  e.preventDefault();
+  var btn     = document.getElementById('folderBtn');
+  var content = document.getElementById('folderContent');
+  var lbl     = document.getElementById('folderLabel');
+  if (!btn.classList.contains('open')) {
+    btn.classList.add('open');
+    content.style.display = 'block';
+    lbl.textContent = 'Hide Projects';
+  }
+  setTimeout(function() {
+    document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });
+  }, 50);
+}
+
+/* ─────────────────────────────────────────────
+   PDF DOWNLOAD  — bulletproof approach:
+   1. Prepare DOM (show/hide sections)
+   2. Add pdf-mode (kill animations & opacity)
+   3. Double-rAF + 300ms paint settle
+   4. Capture & download
+   5. Full restore
+───────────────────────────────────────────── */
+function dlPDF() {
+  var include = document.getElementById('inclPort').checked;
+
+  var fab           = document.getElementById('fab');
+  var portSheet     = document.querySelector('.port-sheet');
+  var folderBtn     = document.getElementById('folderBtn');
+  var folderContent = document.getElementById('folderContent');
+  var resumeNotices = document.getElementById('resume-notices');
+  var portNotices   = document.getElementById('portfolio-notices');
+
+  /* ── STEP 1: prepare DOM ── */
+  fab.style.display = 'none';
+
+  if (!include) {
+    /* Resume only — hide portfolio, show resume notices */
+    portSheet.style.display      = 'none';
+    resumeNotices.style.display  = 'block';
+  } else {
+    /* Full — expose all projects, hide folder btn, hide duplicate notices */
+    folderContent.style.display  = 'block';
+    folderBtn.style.display      = 'none';
+    resumeNotices.style.display  = 'none';
+    portNotices.style.display    = 'block';
+  }
+
+  window.scrollTo(0, 0);
+
+  /* ── STEP 2: freeze all animations / opacity ── */
+  document.documentElement.classList.add('pdf-mode');
+  document.body.classList.add('pdf-mode');
+
+  /* ── STEP 3: wait for two animation frames + extra paint time ── */
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() {
+      setTimeout(function() {
+
+        var el = document.getElementById('resume-root');
+
+        html2pdf()
+          .set({
+            margin:   0,
+            filename: include
+                        ? 'Chirag-Vadaria-Full-Resume.pdf'
+                        : 'Chirag-Vadaria-Resume.pdf',
+            image:    { type: 'jpeg', quality: 0.98 },
+            html2canvas: {
+              scale:           2,
+              useCORS:         true,
+              allowTaint:      true,
+              scrollX:         0,
+              scrollY:         0,
+              backgroundColor: '#ffffff',
+              removeContainer: true,
+              logging:         false
+            },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+          })
+          .from(el)
+          .save()
+          .then(function() {
+            /* ── STEP 5: full restore ── */
+            document.documentElement.classList.remove('pdf-mode');
+            document.body.classList.remove('pdf-mode');
+            fab.style.display            = 'flex';
+            portSheet.style.display      = '';
+            folderBtn.style.display      = '';
+            folderContent.style.display  = '';
+            resumeNotices.style.display  = 'block';
+            portNotices.style.display    = 'block';
+          })
+          .catch(function(err) {
+            console.error('PDF error:', err);
+            document.documentElement.classList.remove('pdf-mode');
+            document.body.classList.remove('pdf-mode');
+            fab.style.display = 'flex';
+          });
+
+      }, 300);
+    });
+  });
+}
+</script>
+
+</body>
+</html>
